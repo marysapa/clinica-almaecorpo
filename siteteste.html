@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Alma & Corpo</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f8f5f2; /* creme claro */
+            color: #3a2b4c; /* roxo escuro elegante */
+        }
+
+        header {
+            background-color: #d9c9e6; /* lilás médio */
+            color: #3a2b4c;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        header img {
+            width: 180px;
+            height: auto;
+        }
+
+        header h1 {
+            margin: 15px 0 5px;
+            font-size: 2.5em;
+        }
+
+        header p.slogan {
+            font-size: 1.2em;
+            font-style: italic;
+            color: #4b3a63;
+        }
+
+        nav {
+            background-color: #ede3f5; /* lilás bem clarinho */
+            text-align: center;
+            padding: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #3a2b4c;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #6a4ea6;
+        }
+
+        section {
+            padding: 40px 80px;
+            max-width: 1200px;
+            margin: auto;
+            font-size: 1.1em; /* aumentei levemente o tamanho dos textos */
+            font-weight: 500; /* textos mais fortes */
+        }
+
+        section h2 {
+            color: #3a2b4c;
+            border-left: 6px solid #c8b2e0;
+            padding-left: 10px;
+            font-weight: bold;
+        }
+
+        .banner {
+            background-color: #f0e8f7;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .banner img {
+            width: 220px;
+            height: auto;
+        }
+
+        .banner h1 {
+            font-size: 2.8em;
+            color: #3a2b4c;
+        }
+
+        .banner p {
+            font-size: 1.3em;
+            color: #4b3a63;
+        }
+
+        footer {
+            background-color: #d9c9e6;
+            color: #3a2b4c;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        .btn-agendar {
+            display: inline-block;
+            background-color: #7a5fbf;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn-agendar:hover {
+            background-color: #644aa3;
+        }
+
+        .contato-form input, .contato-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .contato-form button {
+            background-color: #7a5fbf;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contato-form button:hover {
+            background-color: #644aa3;
+        }
+
+        /* Mensagem de sucesso (animação) */
+        .mensagem-sucesso {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .mensagem-sucesso.mostrar {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Serviços em quadrados */
+        .servicos-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .servico-box {
+            background-color: #ede3f5;
+            border-radius: 12px;
+            padding: 20px;
+            width: 220px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .servico-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Equipe médica */
+        .equipe-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .medico-box {
+            background-color: #ede3f5;
+            border-radius: 12px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .medico-box img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .medico-box h3 {
+            margin: 10px 0 5px;
+            color: #3a2b4c;
+        }
+
+        .medico-box p {
+            color: #5b4a74;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="almaecorpo.jpeg" alt="Logo Clínica Alma & Corpo">
+        <h1>Clínica Alma & Corpo</h1>
+        <p class="slogan">Cuidando de quem precisa, formando quem faz a diferença.</p>
+    </header>
+
+    <nav>
+        <a href="#sobre">Sobre Nós</a>
+        <a href="#historia">Nossa História</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#medicos">Médicos</a>
+        <a href="#contato">Contato</a>
+        <a href="#agendar" class="btn-agendar">Agendar Consulta</a>
+    </nav>
+
+    <section class="banner">
+        <img src="almaecorpo.jpeg" alt="Logo Clínica Alma & Corpo">
+        <h1>Bem-vindo à Clínica Alma & Corpo</h1>
+        <p>Saúde, equilíbrio e bem-estar ao seu alcance.</p>
+    </section>
+
+    <section id="sobre">
+        <h2>Sobre Nós</h2>
+        <p>
+            A Clínica Alma & Corpo nasceu da ideia de oferecer tratamento psicológico e fisioterapêutico acessível, 
+            tanto para pacientes que não possuem convênio médico quanto para universitários que buscam oportunidades 
+            de estágio e inserção no mercado de trabalho. Com base em valores humanos e sociais, nossa clínica busca 
+            unir qualidade, empatia e formação profissional, beneficiando tanto quem recebe o tratamento quanto quem o oferece.
+        </p>
+    </section>
+
+    <section id="historia">
+        <h2>Nossa História</h2>
+        <p>Desde 2024, a Clínica Alma & Corpo tem se dedicado a oferecer um atendimento de excelência, prezando pela saúde integral e pelo bem-estar dos nossos pacientes. Ao longo do tempo, ampliamos nossos serviços e fortalecemos nosso compromisso com a formação de profissionais qualificados.</p>
+    </section>
+
+    <section id="servicos">
+        <h2>Nossos Serviços</h2>
+        <div class="servicos-container">
+            <div class="servico-box">Psicólogo(a) Infantil</div>
+            <div class="servico-box">Psicólogo(a) para Adultos</div>
+            <div class="servico-box">Fisioterapia</div>
+            <div class="servico-box">Terapia Ocupacional</div>
+        </div>
+    </section>
+
+    <section id="medicos">
+        <h2>Nossa Equipe Médica</h2>
+        <div class="equipe-container">
+            <div class="medico-box">
+                <img src="Pcicóloga negra.jpg" alt="Dra. Débora Alessandra Lemes">
+                <h3>Dra. Débora Alessandra Lemes</h3>
+                <p>Psicóloga Infantil</p>
+            </div>
+            <div class="medico-box">
+                <img src="Negropcicólogo.jpg" alt="Dr. Alexandre de Moraes de Souza">
+                <h3>Dr. Alexandre de Moraes de Souza</h3>
+                <p>Psicólogo para Adultos</p>
+            </div>
+            <div class="medico-box">
+                <img src="Homembranco.jpg" alt="Dr. Átila Marinho Jr.">
+                <h3>Dr. Átila Marinho Jr.</h3>
+                <p>Fisioterapeuta</p>
+            </div>
+            <div class="medico-box">
+                <img src="OCUPACAO.jpg" alt="Dra. Naomi Nagashima">
+                <h3>Dra. Naomi Nagashima</h3>
+                <p>Terapeuta Ocupacional</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="agendar">
+        <h2>Agendar Consulta</h2>
+        <p>Preencha o formulário abaixo e entraremos em contato para confirmar seu horário.</p>
+        <form class="contato-form" id="formAgendar">
+            <input type="text" placeholder="Seu nome" required>
+            <input type="email" placeholder="Seu e-mail" required>
+            <input type="tel" placeholder="Seu telefone" required>
+            <textarea rows="5" placeholder="Mensagem ou especialidade desejada"></textarea>
+            <button type="submit">Enviar Solicitação</button>
+        </form>
+
+        <div class="mensagem-sucesso" id="mensagemSucesso">
+            ✅ Atendimento concluído com sucesso! Entraremos em contato em breve.
+        </div>
+    </section>
+
+    <section id="contato">
+        <h2>Entre em Contato</h2>
+        <p>📞 Telefone: (11) 91107-0888</p>
+        <p>📧 Email: clinicaAlmaeCorpo.atendimento@gmail.com</p>
+        <p>🌐 Redes Sociais: <a href="https://www.instagram.com/clinicaalmaecorpo_/" target="_blank">Instagram</a> | <a href="#">LinkedIn</a></p>
+    </section>
+
+    <footer>
+        <p>© 2025 Clínica Alma & Corpo | Todos os direitos reservados</p>
+        <p>Endereço: Rua da Saúde, 123 - São Paulo, SP</p>
+    </footer>
+
+    <script>
+        document.getElementById("formAgendar").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const msg = document.getElementById("mensagemSucesso");
+            msg.classList.add("mostrar");
+            setTimeout(() => {
+                msg.classList.remove("mostrar");
+            }, 4000);
+            this.reset();
+        });
+    </script>
+</body>
+</html>
+
+
